@@ -1,0 +1,24 @@
+ static int[] inventory = { 600 , 300, 500, 600, 200, 400, 1000, 11000, 100 };
+        
+static void Main(string[] args)
+        {
+
+            Parallel.For(0, inventory.Length, (index) =>
+                {
+                    var price = inventory[index];
+
+                    if( price>500 )
+                    {
+                        inventory[index] = (int) (price*0.8);
+                    }
+                    else
+                    {
+                        inventory[index] = (int)(price * 0.9);
+                    }
+
+                    Console.WriteLine("Item {0} - price {1}", index , inventory[index]);
+                });
+
+            Console.ReadKey();
+            
+        }

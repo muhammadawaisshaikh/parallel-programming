@@ -1,0 +1,39 @@
+static void Main(string[] args)
+        {
+            Barrier b = new Barrier(3);
+ 
+            var task1 = Task.Factory.StartNew( ()=> 
+            {
+                b.SignalAndWait();
+                sumpow();
+            });
+            var task2 = Task.Factory.StartNew( ()=>
+                {
+                    b.SignalAndWait();
+                    sumpowA();
+                });
+
+            task1.Wait();
+            Console.ReadKey();
+        }
+
+        // method sum power
+        public static void sumpow()
+        {
+            double c = 0;
+            for (double i = 1; i < 20000; i++)
+            {
+                c = c + Math.Pow(i, 2);
+            }
+            Console.WriteLine(c);
+        }
+
+        public static void sumpowA()
+        {
+            double c = 0;
+            for (double i = 10; i < 20; i++)
+            {
+                c = c + Math.Pow(i, 2);
+            }
+            Console.WriteLine(c);
+        }

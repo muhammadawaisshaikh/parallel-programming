@@ -1,0 +1,24 @@
+ static void Main(string[] args)
+        {
+
+            Parallel.Invoke(new Action[] { printA , printB });
+
+            Console.ReadKey();
+        }
+
+        // method A
+        public static void printA()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("A");
+            }
+        }
+        // method B
+        public static void printB()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("B");
+            }
+        }

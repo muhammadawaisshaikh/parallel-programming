@@ -1,0 +1,20 @@
+  int val;
+            Console.WriteLine("enter stop state index : ");
+            val = Convert.ToInt16(Console.ReadLine());
+
+            int[] arr = { 1,2,3,4,5,6,7,8,9,10 };
+
+            Parallel.For(arr[0], arr.Length, (i, loopstate) => 
+            {
+                if (i == val)
+                {
+                    loopstate.Stop();
+                    Console.WriteLine("Stop called {0}", i);
+                }
+
+                else
+                {
+                    Console.WriteLine(i);
+                }
+            });
+

@@ -1,0 +1,34 @@
+// through task.factory 
+
+
+static void methodA()
+        {
+            throw new Exception("method A Exception");
+        }
+        static void methodB()
+        {
+            throw new Exception("method B Exception");
+        }
+        static void methodC()
+        {
+            throw new Exception("method C Exception");
+        }
+
+
+
+// CODE OF MAIn
+try
+            {
+                var taskA = Task.Factory.StartNew(methodA);
+                var taskB = Task.Factory.StartNew(methodB);
+                var taskC = Task.Factory.StartNew(methodC);
+
+                Task.WaitAll(new Task[] { taskA, taskB, taskC });
+            }
+            catch(AggregateException ex)
+            {
+                foreach(var n in ex.InnerExceptions)
+                {
+                    Console.WriteLine(n.Message);
+                }
+            }

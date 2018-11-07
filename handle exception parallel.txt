@@ -1,0 +1,29 @@
+static void methodA()
+        {
+            throw new Exception("method A Exception");
+        }
+        static void methodB()
+        {
+            throw new Exception("method B Exception");
+        }
+        static void methodC()
+        {
+            throw new Exception("method C Exception");
+        }
+
+        static void Main(string[] args)
+        {
+            try
+            {
+                Parallel.Invoke(new Action[] { methodA , methodB , methodC });
+            }
+            catch(AggregateException exa)
+            {
+                exa.Handle( ex =>
+                {
+                    Console.WriteLine(ex.Message);
+                    return true;
+                } );
+                
+            }
+        }

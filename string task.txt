@@ -1,0 +1,5 @@
+var taskA = Task<int>.Factory.StartNew(val => { return ((string)val).Length; }, " on the moon ");
+            taskA.Wait();
+            Console.WriteLine(taskA.Result);
+
+            Console.ReadKey();
